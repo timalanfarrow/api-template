@@ -1,13 +1,8 @@
 require( 'apprequire' )( __dirname );
 require( 'dotenv' ).config();
 
-const app = appRequire( '' );
-// const container = require( 'src/container' );
+const server   = appRequire( '/infrastructure/web/server' );
+const database = appRequire( '/infrastructure/database/sql' );
 
-// const app = container.resolve( 'app' );
-
-// app
-//   .start()
-//   .catch( ( error ) => {
-//     console.log( error );
-//   } );
+// Connect to database
+server.start();
