@@ -3,3 +3,8 @@
 
 # Node
 node_modules/
+
+private/*
+
+# Too keep an empty private dir
+!private/.gitkeep
