@@ -1,19 +1,13 @@
-const repo = require( './users/sql-repo' );
+const Promise = require( 'bluebird' );
 
-const createUser = () => {
+const Repo = require( './users.repo' );
 
-};
+const createUser = Promise.method( async () => {
 
-const deleteUser = () => {
+	return Repo.createUser();
 
-};
-
-const updateUser = () => {
-
-};
+} );
 
 module.exports = {
 	createUser,
-	deleteUser,
-	updateUser,
-}
+};

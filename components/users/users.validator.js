@@ -1,5 +1,6 @@
 const Joi = require( 'joi' );
-const { celebrate } = require( 'celebrate' );
+
+const { celebrate } = appRequire( 'helpers/celebrate' );
 
 const createUser = celebrate( {
 	body : Joi.object().keys( {
@@ -23,4 +24,4 @@ module.exports = {
 	createUser,
 	deleteUser,
 	updateUser
-}
+};
