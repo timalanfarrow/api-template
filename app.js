@@ -1,10 +1,18 @@
 require( 'apprequire' )( __dirname );
 require( 'dotenv' ).config();
 
-const server   = appRequire( '/infrastructure/web/server' );
-const database = appRequire( '/infrastructure/database/sql' );
+const server   = appRequire( '/infra/web/server' );
+const database = appRequire( '/infra/database/knex' );
 
 // Connect to database
+knex.raw( 'select 1+1 as result' )
+	.then( () => {
+		console.log( 'connected to db' );
+	} )
+	.catch( ( err ) => {
+		console.log( 'not connected to db : ', err );
+	} );
+
 
 // Start server
 server.start();

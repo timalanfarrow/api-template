@@ -1,16 +1,8 @@
-const fs = require( 'fs' );
-const path = require( 'path' );
-
 const env = process.env.NODE_ENV || 'development';
 
-const envConfig = appRequire( `config/environments/${env}.js` );
+const config = appRequire( `config/environments/${env}.js` );
+const database = appRequire( 'knexfile' )[env];
 
-// Setup db config
-const dbConfig = {};
-
-const config = Object.assign( {
-	env,
-	db : dbConfig
-}, envConfig );
-
-module.exports = config;
+module.exports = Object.assign( {
+	db : database
+}, config );
