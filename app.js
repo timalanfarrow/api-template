@@ -1,8 +1,8 @@
 require( 'apprequire' )( __dirname );
 require( 'dotenv' ).config();
 
-const server   = appRequire( '/infra/web/server' );
-const database = appRequire( '/infra/database/knex' );
+const server = appRequire( '/infra/web/server' );
+const knex   = appRequire( '/infra/database/knex' );
 
 // Connect to database
 knex.raw( 'select 1+1 as result' )
