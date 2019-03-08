@@ -2,7 +2,7 @@ const pg = require( 'pg' );
 
 const Knex = require( 'knex' );
 
-const config = appRequire( 'config' );
+const config = appRequire( 'config' ).db;
 
 let knex = null;
 

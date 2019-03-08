@@ -1,7 +1,7 @@
-require( 'dotenv' ).config( { path : './private/.env' } );
+require( 'dotenv' ).config( { path : '../.env' } );
 
-const Str = require( './helpers/convert-string' );
-const { HasProperty } = require( './helpers/utils' );
+const Str = require( '../helpers/convert-string' );
+const { HasProperty } = require( '../helpers/utils' );
 
 const extraConfig = {
 	postProcessResponse( result ) {
@@ -83,13 +83,8 @@ const extraConfig = {
 const config = {
 	development : {
 		client     : 'pg',
-		connection : {
-			host     : '127.0.0.1',
-			database : '', // Fill in testing db name
-			user     : 'postgres',
-			password : 'start',
-		},
-		pool : {
+		connection : `postgres://${process.env.DATABASE_USER}:${process.env.DATABASE_PASSWORD}@${process.env.DATABASE_HOST}_db_1:5432`,
+		pool       : {
 			min : 2,
 			max : 10
 		},
@@ -103,13 +98,8 @@ const config = {
 
 	staging : {
 		client     : 'pg',
-		connection : {
-			host     : process.env.HOST_PSQL,
-			database : process.env.NAME_PSQL,
-			user     : process.env.USER_PSQL,
-			password : process.env.PASSWORD_PSQL,
-		},
-		pool : {
+		connection : `postgres://${process.env.DATABASE_USER}:${process.env.DATABASE_PASSWORD}@${process.env.DATABASE_HOST}_db_1:5432`,
+		pool       : {
 			min : 2,
 			max : 10
 		},
@@ -123,17 +113,16 @@ const config = {
 
 	production : {
 		client     : 'pg',
-		connection : {
-			host     : process.env.HOST_PSQL,
-			database : process.env.NAME_PSQL,
-			user     : process.env.USER_PSQL,
-			password : process.env.PASSWORD_PSQL,
-		},
-		pool : {
+		connection : `postgres://${process.env.DATABASE_USER}:${process.env.DATABASE_PASSWORD}@${process.env.DATABASE_HOST}_db_1:5432`,
+		pool       : {
 			min : 2,
 			max : 10
 		},
 		migrations : {
+			directory : `${__dirname}/infra/database/migrations`
+		},
+		seeds : {
+			directory : `${__dirname}/infra/database/seeds`
 		}
 	}
 
