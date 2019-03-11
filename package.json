@@ -4,7 +4,14 @@
   "description": "api template",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+		"down": "docker-compose down",
+		"env": "export $(cat .env | xargs)",
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"start": "node app.js",
+		"knex": "knex --knexfile ./config/knexfile.js",
+		"up": "yarn env && docker-compose up",
+		"up:b": "yarn up --build",
+		"up:d": "yarn up -d"
   },
   "author": "Tommy Duong",
   "license": "ISC",

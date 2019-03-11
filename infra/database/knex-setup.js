@@ -1,5 +1,3 @@
-const pg = require( 'pg' );
-
 const Knex = require( 'knex' );
 
 const { db } = appRequire( 'config' );

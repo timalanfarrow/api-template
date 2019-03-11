@@ -1,0 +1,11 @@
+# https://docs.docker.com/engine/reference/builder/#dockerignore-file
+
+# config files
+.editorconfig
+.git
+.gitignore
+.nvmrc # Node version already specified in the Dockerfile
+LICENSE
+VERSION
+README.md
+node_modules

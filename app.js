@@ -2,7 +2,7 @@ require( 'apprequire' )( __dirname );
 require( 'dotenv' ).config();
 
 const server = appRequire( '/infra/web/server' );
-const knex   = appRequire( '/infra/database/knex' );
+const { knex }   = appRequire( '/infra/database/knex' );
 
 // Connect to database
 knex.raw( 'select 1+1 as result' )
