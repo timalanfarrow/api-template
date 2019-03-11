@@ -3,8 +3,7 @@ const express = require( 'express' );
 const Service   = require( './users.service' );
 const Validator = require( './users.validator' );
 
-const authenticate = appRequire( 'infra/web/helpers/authenticate' );
-const authorize   = appRequire( 'infra/web/helpers/authorize' );
+const authenticate = appRequire( 'infra/web/middlewares/authenticate' );
 
 const router = express.Router();
 

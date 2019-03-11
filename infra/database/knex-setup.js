@@ -2,12 +2,12 @@ const pg = require( 'pg' );
 
 const Knex = require( 'knex' );
 
-const config = appRequire( 'config' );
+const { db } = appRequire( 'config' );
 
 let knex = null;
 
 if ( !knex ) {
-	knex = Knex( config );
+	knex = Knex( db );
 }
 
 module.exports = knex;
