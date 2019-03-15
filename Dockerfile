@@ -7,12 +7,12 @@
 # Node chosen for its immediate access to NodeJS; ships
 # with the yarn package manager and Aptitude
 # https://yarnpkg.com/en/
-ARG VERSION=10
+ARG VERSION=11
 FROM node:${VERSION}
 
 # Super meta
 LABEL author="JETS Tech"
-LABEL appName="fid-access"
+LABEL appName="api-template"
 LABEL appVersion="0.0.1"
 
 # Install Dockerize - we use this to attempt to
@@ -27,10 +27,9 @@ RUN wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSI
 RUN useradd docker
 
 # Copy all files (that aren't ignored by .dockerignore) to
-# our `home` directory and install all project dependencies
-WORKDIR /home
+# our `home/api` directory and install all project dependencies
+WORKDIR /home/api
 COPY . .
-RUN rm -rf node_modules
 RUN yarn --pure-lockfile
 
 # Init project env variables and expose app port; NODE_ENV
