@@ -100,3 +100,8 @@ src/
   server.ts               # the server itself
   index.ts                # application entrypoint (master-slave configuration)
 ```
+
+## Testing
+
+Documentation will come shortly
+* TODO: add vscode debugger profile
