@@ -104,4 +104,5 @@ src/
 ## Testing
 
 Documentation will come shortly
-* TODO: add vscode debugger profile
+
+- TODO: add vscode debugger profile
