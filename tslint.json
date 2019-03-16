@@ -1,0 +1,31 @@
+{
+	"extends": "tslint-config-airbnb",
+	"rulesDirectory": "node_modules/tslint-microsoft-contrib",
+	"rules": {
+		"no-use-before-declare": false,
+		"function-name": false,
+		"no-console": false,
+		"max-line-length": false,
+		"quotemark": [true, "single"],
+		"object-literal-key-quotes": [true, "consistent"],
+		"indent": [true, "tabs", 2],
+		"ter-indent": false,
+		"space-within-parens": [true, 1],
+		"space-in-parens": false,
+		"align": [true, "members"],
+		"import-name": false,
+		"typedef-whitespace": [
+			true,
+			{
+				"property-declaration": "space",
+				"variable-declaration": "space"
+			},
+			{
+				"property-declaration": "onespace",
+				"variable-declaration": "space"
+			}
+		],
+		"trailing-comma": false,
+		"variable-name": [true, "ban-keywords", "allow-leading-underscore", "allow-trailing-underscore"]
+	}
+}

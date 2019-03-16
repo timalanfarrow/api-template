@@ -17,4 +17,5 @@ module.exports = {
 		"^.+\\.ts$": "ts-jest",
 	},
 	testEnvironment: "node",
+	setupFilesAfterEnv: ["<rootDir>/setupTests.ts"],
 };
