@@ -31,6 +31,7 @@ describe( 'Crud', () => {
 			done();
 		} );
 	} );
+
 	describe( '#getUsers()', () => {
 		it( 'returns an array of all users in database', async ( done ) => {
 			const users : User[] = await Crud.getUsers();

@@ -122,10 +122,11 @@ this field altogether.
 - TODO: figure out a way to properly exit the test suite
   without using `process.exit`, even though it does return
   the proper result code.
-- TODO: add vscode debugger profile
 
 ## Additional notes
 
 - [knex@0.16.4-next2](https://github.com/tgriesser/knex/issues/2998#issuecomment-472631411)
   has broken TypeScript support. Until this gets fixed,
-  stay on `0.15.2`.
+  stay on `0.15.2` (which has broken Promise support).
+- Use the following for validating a JWT:
+  - `Joi.string().regex(/^[A-Za-z0-9-_=]+\.[A-Za-z0-9-_=]+\.?[A-Za-z0-9-_.+/=]*$/, "JWT")`
