@@ -13,4 +13,6 @@ beforeAll( () => {
 	} );
 } );
 
-afterAll( () => setTimeout( () => process.exit(), 1000 ) );
+
+// https://github.com/facebook/jest/issues/1456#issuecomment-246205925
+afterAll( () => setTimeout( () => app.close( () => process.exit() ), 1000 ) );
