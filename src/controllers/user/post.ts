@@ -18,7 +18,7 @@ router.post(
 	Validator,
 	( { body } : PostUserBody, res, next ) => {
 		Crud.createUser( body )
-			.then( ( createdUser : User ) => res.status( ResponseCode.Ok ).send( createdUser ) )
+			.then( ( createdUser : User ) => res.status( ResponseCode.Created ).send( createdUser ) )
 			.catch( UserAlreadyExistsError, next );
 	}
 );
