@@ -3,9 +3,9 @@ import { Request } from 'express-serve-static-core';
 
 import User, { UserNotFoundError } from '../../models/user';
 import Crud from '../../lib/users/crud';
-import Validator from '../../lib/users/post/validator';
+import Validator from '../../lib/users/put/validator';
 
-import Status from '../../helpers/statuses';
+import ResponseCode from '../../helpers/responseCode';
 
 const router = express.Router();
 
@@ -21,7 +21,7 @@ router.put(
 	Validator,
 	( { body, params } : PostUserBody, res, next ) => {
 		Crud.updateUser( params.usersKey, body )
-			.then( ( createdUser : User ) => res.status( 200 ).send( createdUser ) )
+			.then( ( createdUser : User ) => res.status( ResponseCode.Ok ).send( createdUser ) )
 			.catch( UserNotFoundError, next );
 	}
 );

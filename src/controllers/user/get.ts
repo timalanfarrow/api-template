@@ -5,6 +5,8 @@ import User, { UserNotFoundError } from '../../models/user';
 import Crud from '../../lib/users/crud';
 import { singularValidator, pluralValidator } from '../../lib/users/get/validator';
 
+import ResponseCode from '../../helpers/responseCode';
+
 const router = express.Router();
 
 router.get(
@@ -12,7 +14,7 @@ router.get(
 	pluralValidator,
 	( _req, res, next ) => {
 		Crud.getUsers()
-			.then( ( users : User[] ) => res.status( 200 ).send( users ) )
+			.then( ( users : User[] ) => res.status( ResponseCode.Ok ).send( users ) )
 			.catch( next );
 	}
 );
@@ -28,7 +30,7 @@ router.get(
 	singularValidator,
 	( { params } : GetUserParams, res, next ) => {
 		Crud.getUser( params.usersKey )
-			.then( ( user : User ) => res.status( 200 ).send( user ) )
+			.then( ( user : User ) => res.status( ResponseCode.Ok ).send( user ) )
 			.catch( UserNotFoundError, next );
 	}
 );

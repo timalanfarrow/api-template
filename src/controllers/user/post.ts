@@ -5,7 +5,7 @@ import User, { UserAlreadyExistsError } from '../../models/user';
 import Crud from '../../lib/users/crud';
 import Validator from '../../lib/users/post/validator';
 
-import Status from '../../helpers/statuses';
+import ResponseCode from '../../helpers/responseCode';
 
 const router = express.Router();
 
@@ -18,7 +18,7 @@ router.post(
 	Validator,
 	( { body } : PostUserBody, res, next ) => {
 		Crud.createUser( body )
-			.then( ( createdUser : User ) => res.status( 200 ).send( createdUser ) )
+			.then( ( createdUser : User ) => res.status( ResponseCode.Ok ).send( createdUser ) )
 			.catch( UserAlreadyExistsError, next );
 	}
 );
