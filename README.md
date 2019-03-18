@@ -119,6 +119,9 @@ Specifying a `volumes` in the docker-compose-test.yaml file
 also causes the tests to run very, very slowly. Just ignore
 this field altogether.
 
+- TODO: figure out a way to properly exit the test suite
+  without using `process.exit`, even though it does return
+  the proper result code.
 - TODO: add vscode debugger profile
 
 ## Additional notes
