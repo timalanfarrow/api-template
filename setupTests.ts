@@ -1,8 +1,3 @@
-import * as Knex from 'knex';
-import * as Knexfile from './src/config/Knexfile';
-
-const knex = Knex( Knexfile );
-
 import server from './src/server';
 
 let app;
