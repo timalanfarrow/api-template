@@ -17,7 +17,10 @@ below:
 DATABASE_USER=postgres # this is usually `$(whoami)` when not using Docker
 DATABASE_PASSWORD=password # this cannot be left empty; this variable is also used in docker-compose.yml
 DATABASE_HOST=ts_express_api # this can be changed to whatever
-FIREBASE_AUTH_KEY=some_auth_token # retrieve from Firebase Admin Control Panel
+FIREBASE_PROJECT_ID=<PROJECT_ID> # retrieve Firebase info from Admin Panel
+FIREBASE_CLIENT_EMAIL=foo@<PROJECT_ID>.iam.gserviceaccount.com
+FIREBASE_PRIVATE_KEY=-----BEGIN PRIVATE KEY-----\n<KEY>\n-----END PRIVATE KEY-----\n
+FIREBASE_DATABASE_URL=https://<DATABASE_NAME>.firebaseio.com
 # Do not add a PORT variable to this file.
 ```
 
@@ -83,7 +86,7 @@ src/
   controllers/            # core route endpoint logic (uses classes from `lib`)
     {subject}/            # Singular subject from `lib`
       {verb}.ts           # The route endpoint itself
-      {verb}.spec.ts      # Route test file (e.g. tests creating a user, etc.)
+      {verb}.spec.ts      # Route test file (e.g. tests creating a user, etc.) (do not implement yet)
   helpers/                # reusable, modular helper methods
   lib/                    # core services and validators
     {subject}s/           # A plural noun (users, roles, etc.)
@@ -122,6 +125,20 @@ this field altogether.
 - TODO: figure out a way to properly exit the test suite
   without using `process.exit`, even though it does return
   the proper result code.
+
+Until knex gets fixed, before running the test suite in
+Docker, you will need to clear the database by running:
+
+```bash
+yarn down
+```
+
+From there, you can run the test suite with:
+
+```bash
+yarn test # Locally (requires local Postgres instance)
+yarn up:test # Docker
+```
 
 ## Additional notes
 
