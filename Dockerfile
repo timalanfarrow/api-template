@@ -30,7 +30,10 @@ RUN useradd docker
 # our `home/api` directory and install all project dependencies
 WORKDIR /home/api
 COPY . .
+# uncomment if you always want fresh packages
 RUN yarn --pure-lockfile
+# uncomment if you want to use the in-cache node_modules
+# RUN yarn
 
 # Init project env variables and expose app port; NODE_ENV
 # is set to `production` here. Use `yarn dev` locally for

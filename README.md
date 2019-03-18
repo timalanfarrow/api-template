@@ -103,7 +103,21 @@ src/
 
 ## Testing
 
-Documentation will come shortly
+Documentation will come shortly. At this time, Knex is just
+broken. Running the Jest watcher while attempting to clean
+the database after each test run just throws the following
+error:
+
+```bash
+Cannot read property `raw` of undefined
+```
+
+Knex... Knex is apparently undefined. You can read more
+about it [here](https://github.com/tgriesser/knex/issues/2725)
+
+Specifying a `volumes` in the docker-compose-test.yaml file
+also causes the tests to run very, very slowly. Just ignore
+this field altogether.
 
 - TODO: add vscode debugger profile
 
