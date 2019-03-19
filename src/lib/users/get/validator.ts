@@ -1,4 +1,4 @@
-import { celebrate, Joi } from 'celebrate';
+import celebrate, { Joi } from '../../../helpers/celebrate';
 
 export const singularValidator = celebrate( {
 	params : Joi.object( {

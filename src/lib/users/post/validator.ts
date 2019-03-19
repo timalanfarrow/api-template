@@ -1,4 +1,4 @@
-import { celebrate, Joi } from 'celebrate';
+import celebrate, { Joi } from '../../../helpers/celebrate';
 
 export default celebrate( {
 	body : Joi.object( {
