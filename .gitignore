@@ -10,3 +10,4 @@ private/*
 !private/.gitkeep
 
 .env
+service-account.json
