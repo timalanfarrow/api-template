@@ -27,6 +27,12 @@ FIREBASE_DATABASE_URL=https://<DATABASE_NAME>.firebaseio.com
 Decide the database username and password before continuing
 on to the next step.
 
+### service-account.json
+
+In order to use this template, you will need to get a
+personal `service-account.json` from Firebase. Place this
+file in `./src/config/`.
+
 ### Locally (without Docker)
 
 Follow the instructions on [DigitalOcean](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-ubuntu-18-04)

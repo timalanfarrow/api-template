@@ -1,5 +1,4 @@
-import * as express from 'express';
-import { Request } from 'express-serve-static-core';
+import { Router, Request } from 'express';
 
 import User, { UserNotFoundError } from '../../models/user';
 import Crud from '../../lib/users/crud';
@@ -7,7 +6,7 @@ import { singularValidator, pluralValidator } from '../../lib/users/get/validato
 
 import ResponseCode from '../../helpers/responseCode';
 
-const router = express.Router();
+const router = Router();
 
 router.get(
 	'/user',

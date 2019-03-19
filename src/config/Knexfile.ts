@@ -1,6 +1,6 @@
-require( 'dotenv' ).config( {
-	path : '../../.env',
-} );
+import * as dotenv from 'dotenv';
+
+dotenv.config( { path : '../../.env' } );
 
 import { Config, PoolConfig, MigratorConfig } from 'knex';
 import * as pg from 'pg';
@@ -20,7 +20,7 @@ const migrations : Readonly<MigratorConfig> = {
 // Do not set any defaults on these environment variables.
 // Let dotenv fail silently and let the database fail to
 // connect.
-const connection = `postgres://${process.env.DATABASE_USER}:${process.env.DATABASE_PASSWORD}@${process.env.DATABASE_HOST}_db_1:5432`;
+const connection = `postgres://${process.env.DATABASE_USER}:${process.env.DATABASE_PASSWORD}@${process.env.DATABASE_HOST}:5432`;
 
 // TypeScript doesn't play nicely with Knexfiles. We will
 // just need to use `module.exports` instead of using

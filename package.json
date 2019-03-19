@@ -5,7 +5,9 @@
   "author": "Tommy Duong",
   "license": "ISC",
   "scripts": {
-    "docker:build": "docker-compose build --no-cache",
+    "docker:build": "docker build -t api-template . --no-cache",
+    "docker:run": "docker run -it -p 8912:8912 --rm --name api-template api-template",
+    "docker:test": "docker build -t api-template . -f deploy.Dockerfile --no-cache && docker run -it -p 8912:8912 --rm --name api-template api-template",
     "coverage": "tsc -p tsconfig.json",
     "coverage:serve": "yarn coverage && yarn serve:lcov",
     "dev": "nodemon",
