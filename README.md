@@ -8,6 +8,8 @@ start making changes.
 
 ## Usage
 
+## .env
+
 A file with the name `.env` _**must**_ exist at the project
 root in order to run this project locally, in CI, and in a
 deployed environment. The `.env` must follow the pattern
@@ -17,10 +19,7 @@ below:
 DATABASE_USER=postgres # this is usually `$(whoami)` when not using Docker
 DATABASE_PASSWORD=password # this cannot be left empty; this variable is also used in docker-compose.yml
 DATABASE_HOST=ts_express_api # this can be changed to whatever
-FIREBASE_PROJECT_ID=<PROJECT_ID> # retrieve Firebase info from Admin Panel
-FIREBASE_CLIENT_EMAIL=foo@<PROJECT_ID>.iam.gserviceaccount.com
-FIREBASE_PRIVATE_KEY=-----BEGIN PRIVATE KEY-----\n<KEY>\n-----END PRIVATE KEY-----\n
-FIREBASE_DATABASE_URL=https://<DATABASE_NAME>.firebaseio.com
+DATABASE_NAME=postgres # this can be changed to whatever also
 # Do not add a PORT variable to this file.
 ```
 

@@ -20,7 +20,7 @@ describe( 'Crud', () => {
 			done();
 		} );
 
-		it( 'throws an error if another user is created with an existing email address', async ( done ) => {
+		it( 'throws an error if another user is created with an existing email address', ( done ) => {
 			const user : Bluebird<User> = Crud.createUser( {
 				name            : 'Already Taken',
 				email           : 'tim@jetstechnologies.com',

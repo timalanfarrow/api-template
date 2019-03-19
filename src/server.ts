@@ -1,3 +1,5 @@
+require( 'dotenv' ).config();
+
 import * as express from 'express';
 import * as celebrate from 'celebrate';
 import * as Knex from 'knex';

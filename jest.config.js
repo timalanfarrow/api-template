@@ -4,8 +4,7 @@ module.exports = {
 	],
 	coverageDirectory: "coverage",
 	testMatch: [
-		"<rootDir>/src/lib/**/?(*.)(spec|test).(js|ts)",
-		"<rootDir>/src/helpers/**/?(*.)(spec|test).(js|ts)",
+		"<rootDir>/src/lib/**/?(*.)(spec).(ts)",
 	],
 	reporters: process.env.CI ? undefined : ["jest-spec-reporter"],
 	rootDir: ".",

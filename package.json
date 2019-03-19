@@ -7,7 +7,7 @@
   "scripts": {
     "docker:build": "docker build -t api-template . --no-cache",
     "docker:run": "docker run -it -p 8912:8912 --rm --name api-template api-template",
-    "docker:test": "docker build -t api-template . -f deploy.Dockerfile --no-cache && docker run -it -p 8912:8912 --rm --name api-template api-template",
+    "docker:test": "yarn env && docker build -t api-template . -f deploy.Dockerfile --no-cache && docker run -it -p 8912:8912 --rm --name api-template api-template",
     "coverage": "tsc -p tsconfig.json",
     "coverage:serve": "yarn coverage && yarn serve:lcov",
     "dev": "nodemon",
@@ -59,7 +59,9 @@
     "husky": "^1.3.1",
     "jest": "^24.5.0",
     "jest-spec-reporter": "^1.0.5",
+    "knex-db-manager": "^0.5.0",
     "nodemon": "^1.18.10",
+    "pg-escape": "^0.2.0",
     "serve": "^10.1.2",
     "supertest": "^4.0.2",
     "ts-jest": "^24.0.0",
