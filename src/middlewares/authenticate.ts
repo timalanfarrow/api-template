@@ -12,18 +12,9 @@ export default async function ( req : Request, res : Response, next : NextFuncti
 		.auth()
 		.verifyIdToken( authToken )
 		.then( authUser => authUser.uid )
-		.catch( ( { message } ) => {
-			// We can return a plain object here because we have
-			// a function on the frontend that reads this
-			// specific object and if the response code is not
-			// in the 200's, an error is generated when the
-			// request finishes.
-
-			// return res.status( ResponseCode.Unauthorized ).json( {
-			// 	message,
-			// } );
-			return next( new FirebaseIdTokenFailedError( ResponseCode.Unauthorized, message ) );
-		} );
+		.catch( ( { message } ) =>
+			next( new FirebaseIdTokenFailedError( ResponseCode.Unauthorized, message ) )
+		);
 
 	if ( typeof uid !== 'string' ) {
 		return next();
@@ -38,7 +29,7 @@ export default async function ( req : Request, res : Response, next : NextFuncti
 		.then( snapshot => snapshot.val() );
 
 	if ( !authUser ) {
-		next( new FirebaseIdTokenFailedError( ResponseCode.BadRequest, 'Bad token.' ) );
+		return next( new FirebaseIdTokenFailedError( ResponseCode.BadRequest, 'Bad token.' ) );
 	}
 
 	res.locals.caller = { ...authUser, uid };
