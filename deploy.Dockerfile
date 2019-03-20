@@ -15,17 +15,6 @@ LABEL author="JETS Tech"
 LABEL appName="api-template"
 LABEL appVersion="0.0.1"
 
-# Install Dockerize - we use this to attempt to
-# re-establish a connection to the database in case of a
-# possible connection failure.
-# https://github.com/jwilder/dockerize
-ENV DOCKERIZE_VERSION v0.6.1
-RUN wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
-	&& tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
-	&& rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
-
-RUN useradd docker
-
 # Copy all files (that aren't ignored by .dockerignore) to
 # our `home/api` directory and install all project dependencies
 WORKDIR /home/api
@@ -42,6 +31,8 @@ RUN yarn --pure-lockfile
 ENV NODE_ENV=production
 ENV PORT=8912
 
+RUN yarn knex migrate:latest
+
 EXPOSE 8912
 
-CMD yarn start
+CMD yarn test:base

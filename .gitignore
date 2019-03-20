@@ -8,3 +8,6 @@ private/*
 
 # Too keep an empty private dir
 !private/.gitkeep
+
+.env
+service-account.json
