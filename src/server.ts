@@ -25,7 +25,6 @@ app.use( celebrate.errors() );
 
 app.use( ( err : any, _req, res, _next ) => {
 	console.error( err );
-	const { code, message } = err;
 
 	if ( !err.isOperational ) {
 		return res.status( err.code ).json( err );

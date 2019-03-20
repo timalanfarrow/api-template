@@ -111,39 +111,56 @@ src/
 
 ## Testing
 
-Documentation will come shortly. At this time, Knex is just
-broken. Running the Jest watcher while attempting to clean
-the database after each test run just throws the following
-error:
+Make sure your `.env` has the proper variables for local,
+staging, and remote (Firebase test support coming soon).
+
+### Local testing (without Docker)
+
+Simply run the following:
 
 ```bash
-Cannot read property `raw` of undefined
+# yarn
+yarn test
+
+# npm
+npm test
 ```
 
-Knex... Knex is apparently undefined. You can read more
-about it [here](https://github.com/tgriesser/knex/issues/2725)
-
-Specifying a `volumes` in the docker-compose-test.yaml file
-also causes the tests to run very, very slowly. Just ignore
-this field altogether.
-
-- TODO: figure out a way to properly exit the test suite
-  without using `process.exit`, even though it does return
-  the proper result code.
-
-Until knex gets fixed, before running the test suite in
-Docker, you will need to clear the database by running:
+### Local testing (with Docker)
 
 ```bash
-yarn down
+# yarn
+yarn up:test
+
+#npm
+npm run up:test
 ```
 
-From there, you can run the test suite with:
+### Staging
+
+Use this purely in the CI; get the IP address and password
+of the Google Cloud Platform database assigned to this
+project, and set them to their respective environment
+variables. Then run the following:
 
 ```bash
-yarn test # Locally (requires local Postgres instance)
-yarn up:test # Docker
+# yarn
+yarn test:ci
+
+# npm
+npm run test:ci
 ```
+
+This will run a coverage report based on the Jest tests,
+and saves them to the `coverage/` directory in the CI
+container. You can then use this information with a
+coverage reporter, such as [CodeClimate](https://codeclimate.com/).
+
+A coverage reporter tool can provide insight to the overall
+maintainability of the code, as well as areas of code that
+either haven't been tested, or exposes areas of code that
+are unreachable. All this to say, it enables greater code
+confidence.
 
 ## Additional notes
 
