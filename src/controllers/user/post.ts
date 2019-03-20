@@ -5,7 +5,7 @@ import Crud from '../../lib/users/crud';
 import Validator from '../../lib/users/post/validator';
 
 import ResponseCode from '../../helpers/responseCode';
-import Authenticate from '../../middlewares/authenticate';
+import Authenticate, { FirebaseIdTokenFailedError } from '../../middlewares/authenticate';
 
 const router = Router();
 
@@ -20,7 +20,11 @@ router.post(
 	( { body } : PostUserBody, res, next ) => {
 		Crud.createUser( body )
 			.then( ( createdUser : User ) => res.status( ResponseCode.Created ).send( createdUser ) )
-			.catch( UserAlreadyExistsError, next );
+			.catch(
+				UserAlreadyExistsError,
+				FirebaseIdTokenFailedError,
+				next,
+			);
 	}
 );
 

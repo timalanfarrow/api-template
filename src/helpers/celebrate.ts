@@ -1,4 +1,4 @@
-import { celebrate, Joi } from 'celebrate';
+import { celebrate } from 'celebrate';
 export { Joi } from 'celebrate';
 
 const options = {

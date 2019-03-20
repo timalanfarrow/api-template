@@ -18,15 +18,20 @@ app.use( express.json() );
 app.use( express.urlencoded( {
 	extended : false,
 } ) );
+
+app.use( expressRouteAutoloader( `${__dirname}/controllers` ) );
+
 app.use( celebrate.errors() );
+
 app.use( ( err : any, _req, res, _next ) => {
 	console.error( err );
+	const { code, message } = err;
 
 	if ( !err.isOperational ) {
-		return res.status( 500 ).send( err );
+		return res.status( err.code ).json( err );
 	}
 
-	return res.status( err.status ).send( err );
+	return res.status( err.code ).send( err );
 } );
 
 process.on( 'unhandledRejection', ( reason : unknown ) => {
@@ -46,8 +51,5 @@ process.on( 'uncaughtException', ( err : any ) => {
 		process.exit( 1 );
 	}
 } );
-
-// Dynamically inject routers into application
-app.use( expressRouteAutoloader( `${__dirname}/controllers` ) );
 
 export default app;
